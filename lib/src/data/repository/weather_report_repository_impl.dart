@@ -18,7 +18,7 @@ class WeatherReportRepositoryImpl implements WeatherReportRepository {
     final httpResponse = await _weatherApiService.getWeatherReports(
       _apiKey
     );
-    if(httpResponse.statusCode >= 200){
+    if(httpResponse.statusCode == 200){
       final json = jsonDecode(httpResponse.body);
       final data = WeatherReportModel.fromJson(json);
       return DataSuccess(data);
