@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                 );
               } else if (state is RemoteWeatherReportDone) {
                 print('nice');
-                print(state.weatherReport!.country==null);
+                print(state.weatherReport!.temp==null);
                 final weatherReport = state.weatherReport!;
                 return Center(
                   child: Card(

@@ -7,7 +7,7 @@ class WeatherApiService {
 
   Future<Response> getWeatherReports(String apiKey) async {
     final String url =
-        "$_baseUrl?lat=34&lon=34&exclude=hourly,daily&appid=$apiKey";
+        "$_baseUrl?lat=34&lon=34&exclude=hourly,daily,minutely&appid=$apiKey";
     return get(Uri.parse(url));
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc_counter/src/domain/entities/weather_report.dart';
 
 class WeatherReportModel extends WeatherReportEntity {
@@ -11,12 +13,14 @@ class WeatherReportModel extends WeatherReportEntity {
   });
 
   factory WeatherReportModel.fromJson(Map<String, dynamic> json) {
+    final current = json['current'] as Map<String, dynamic>;
+    final weather = (current['weather'] as List).first as Map<String, dynamic>;
     return WeatherReportModel(
-      id: json['id'] ?? "",
-      main: json['main'] ?? "",
-      description: json['description'] ?? "",
-      name: json['name'] ?? "",
-      temp: json['temp'] ?? "",
+      id: weather['id'].toString(),
+      main: weather['main'] ?? "",
+      description: weather['description'] ?? "",
+      name: json['timezone'] ?? "",
+      temp: current['temp'].toString(),
       country: json['country'] ?? "",
     );
   }
